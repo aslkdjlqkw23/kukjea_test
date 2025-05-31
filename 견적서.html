@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>신규 견적서 생성</title>
+  <style>
+    body {
+      background-color: #dfd3c3;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      height: 97vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-button {
+      background-color: #fff8f0;
+      color: #8c6a4f;
+      border: 1px solid #8c6a4f;
+      padding: 6px 14px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      position: absolute;
+      top: 63px;
+      right: 1210px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #8c6a4f;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    form {
+      width: 100%;
+      max-width: 650px;
+      background-color: #fff8f0;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 7px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      background-color: #fff8f0;
+      color: #333;
+    }
+
+    .next-button {
+      margin-top: 16px;
+      background-color: #a47148;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s ease;
+    }
+
+    .next-button:hover {
+      background-color: #8c5f3b;
+    }
+
+    .section-title {
+      margin-top: 0px;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 6px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <button class="back-button" onclick="goBack()">← 뒤로</button>
+
+  <h1>신규 견적서 생성</h1>
+
+  <form action="견적서-2.html" method="get">
+
+    <!-- 발주처 기본 정보 항목 -->
+    <div class="section-title">발주처 기본 정보 항목</div>
+
+    <label for="siteName">현장명</label>
+    <input type="text" id="siteName" name="siteName" placeholder="현장명을 입력하세요">
+
+    <label for="orderDate">발주일자</label>
+    <input type="date" id="orderDate" name="orderDate">
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+        const dd = String(today.getDate()).padStart(2, '0');
+        const formattedDate = `${yyyy}-${mm}-${dd}`;
+        const orderDateInput = document.getElementById('orderDate');
+    
+        // 기본값이 비어있을 때만 오늘 날짜 설정 (이미 값이 있으면 덮어쓰지 않음)
+        if (!orderDateInput.value) {
+          orderDateInput.value = formattedDate;
+        }
+        });
+    </script>
+
+    <label for="orderClient">발주처</label>
+    <input type="text" id="orderClient" name="orderClient" placeholder="발주처를 입력하세요">
+    
+    <label for="orderPlace">발주처 주소</label>
+    <input type="text" id="orderPlace" name="orderPlace" placeholder="발주처 주소를 입력하세요">
+
+    <label for="orderPerson">발주 담당자</label>
+    <input type="text" id="orderPerson" name="orderPerson" placeholder="담당자 이름을 입력하세요">
+
+    <label for="orderPhone">발주 담당자 전화번호</label>
+    <input type="tel" id="orderPhone" name="orderPhone" placeholder="전화번호를 입력하세요">
+   
+    <label for="orderFax">발주 담당자 FAX 번호</label>
+    <input type="text" id="orderFax" name="orderFax" placeholder="FAX 번호를 입력하세요">
+      
+    <label for="deliveryPerson">담당자</label>
+    <select id="deliveryPerson" name="deliveryPerson">
+      <option value="" disabled selected>담당자를 선택하세요</option>
+      <option value="최병설 상무">최병설 상무</option>
+      <option value="김은구 이사">김은구 이사</option>
+      <option value="호민준 대리">호민준 대리</option>
+    </select>
+
+    <button class="next-button" type="submit">다음 →</button>
+  </form>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
+</body>
+</html>

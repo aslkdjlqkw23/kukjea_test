@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>신규 견적서 생성</title>
+  <style>
+    body {
+      background-color: #dfd3c3;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff8f0;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"],
+    input[type="fax"] {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>신규 견적서 생성</h1>
+
+  <form>
+    <label for="siteName">현장명</label>
+    <input type="text" id="siteName" name="siteName" placeholder="현장명을 입력하세요">
+
+    <label for="orderDate">발주일자</label>
+    <input type="date" id="orderDate" name="orderDate">
+
+    <label for="orderClient">발주처</label>
+    <input type="text" id="orderClient" name="orderClient" placeholder="발주처를 입력하세요">
+
+    <label for="orderPerson">담당자</label>
+    <input type="text" id="orderPerson" name="orderPerson" placeholder="담당자 이름을 입력하세요">
+
+    <label for="deliveryPlace">납품처</label>
+    <input type="text" id="deliveryPlace" name="deliveryPlace" placeholder="납품처를 입력하세요">
+
+    <label for="deliveryPerson">담당자</label>
+    <input type="text" id="deliveryPerson" name="deliveryPerson" placeholder="납품처 담당자 이름을 입력하세요">
+
+    <label for="deliveryPhone">납품처 전화번호</label>
+    <input type="tel" id="deliveryPhone" name="deliveryPhone" placeholder="전화번호를 입력하세요">
+
+    <label for="fax">FAX</label>
+    <input type="text" id="fax" name="fax" placeholder="FAX 번호를 입력하세요">
+  </form>
+
+</body>
+</html>

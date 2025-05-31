@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>신규 견적서 생성</title>
+  <style>
+    body {
+      background-color: #dfd3c3;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      height: 97vh;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .back-button {
+      background-color: #fff8f0;
+      color: #8c6a4f;
+      border: 1px solid #8c6a4f;
+      padding: 6px 14px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      position: absolute;
+      top: 50px;
+      right: 1200px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #8c6a4f;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    form {
+      width: 100%;
+      max-width: 650px;
+      background-color: #fff8f0;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 20px;
+      margin-bottom: 7px;
+    }
+
+    .item-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+      flex: 1;
+      padding: 8px 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      background-color: #fff8f0;
+      color: #333;
+    }
+
+    .add-button {
+      background-color: #a47148;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .add-button:hover {
+      background-color: #8c5f3b;
+    }
+
+    .delete-button {
+      background-color: transparent;
+      border: none;
+      color: #a00;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0 6px;
+    }
+
+    .delete-button:hover {
+      color: #e00;
+    }
+
+    .next-button {
+      margin-top: 16px;
+      background-color: #a47148;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s ease;
+    }
+
+    .next-button:hover {
+      background-color: #8c5f3b;
+    }
+
+    .section-title {
+      margin-top: 0px;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 6px;
+    }
+
+    .flex-grow {
+      flex: 1;
+    }
+
+    .delete-button-placeholder {
+      width: 30px;
+      height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="back-button" onclick="goBack()">← 뒤로</button>
+
+  <h1>신규 견적서 생성</h1>
+
+  <form action="견적서-2.html" method="get">
+
+    <!-- 발주 항목 -->
+    <div class="section-title">발주항목</div>
+
+    <!-- PC -->
+    <label>PC</label>
+    <div id="pc-section">
+      <div class="item-row">
+        <select name="pc_model[]">
+           <option value="">모델 선택</option>
+           <option value="삼성 i5">삼성 i5</option>
+           <option value="삼성 i7">삼성 i7</option>
+           <option value="LG i5">LG i5</option>
+           <option value="LG i7">LG i7</option>
+        </select>
+        <input type="number" name="pc_qty[]" min="1" placeholder="수량">
+        <button type="button" class="delete-button" onclick="removeRow(this, 'pc')">✕</button>
+     </div>
+    </div>
+    <button type="button" class="add-button" onclick="addRow('pc')">+ 항목 추가</button>
+
+    <!-- Monitor -->
+    <label>모니터</label>
+    <div id="monitor-section">
+      <div class="item-row">
+        <select name="monitor_model[]">
+          <option value="">모델 선택</option>
+          <option value="삼성 24인치">삼성 24인치</option>
+          <option value="삼성 27인치">삼성 27인치</option>
+        </select>
+        <input type="number" name="monitor_qty[]" min="1" placeholder="수량">
+        <button type="button" class="delete-button" onclick="removeRow(this, 'monitor')">✕</button>
+      </div>
+    </div>
+    <button type="button" class="add-button" onclick="addRow('monitor')">+ 항목 추가</button>
+
+    <!-- Router -->
+    <label>라우터</label>
+    <div id="router-section">
+      <div class="item-row">
+        <select name="router_model[]">
+          <option value="">모델 선택</option>
+          <option value="G5CE">G5CE</option>
+          <option value="G5RE">G5RE</option>
+          <option value="LGR25">LGR25</option>
+          <option value="LGR250">LGR250</option>
+        </select>
+        <input type="number" name="router_qty[]" min="1" placeholder="수량">
+        <button type="button" class="delete-button" onclick="removeRow(this, 'router')">✕</button>
+      </div>
+    </div>
+    <button type="button" class="add-button" onclick="addRow('router')">+ 항목 추가</button>
+
+    <!-- ALC -->
+    <label>ALC 모듈</label>
+    <div id="alc-section">
+      <div class="item-row">
+        <select name="alc_model[]">
+          <option value="">모델 선택</option>
+          <option value="ZN551">ZN551</option>
+          <option value="ZN253">ZN253</option>
+          <option value="SE6104SP">SE6104SP</option>
+          <option value="SE6166SP">SE6166SP</option>
+        </select>
+        <input type="number" name="alc_qty[]" min="1" placeholder="수량">
+        <button type="button" class="delete-button" onclick="removeRow(this, 'alc')">✕</button>
+      </div>
+    </div>
+    <button type="button" class="add-button" onclick="addRow('alc')">+ 항목 추가</button>
+
+    <!-- 인건비 -->
+    <label>인건비</label>
+    <div id="labor-section">
+      <div class="item-row">
+        <input type="text" name="labor[]" placeholder="금액 또는 상세 내용을 입력하세요" class="flex-grow">
+        <button type="button" class="delete-button" onclick="removeRow(this, 'labor')">✕</button>
+      </div>
+    </div>
+    <button type="button" class="add-button" onclick="addRow('labor')">+ 항목 추가</button>
+
+    <button class="next-button" type="submit">다음 →</button>
+
+  </form>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function addRow(type) {
+      const section = document.getElementById(`${type}-section`);
+      const newRow = document.createElement('div');
+      newRow.className = 'item-row';
+
+      let innerHTML = '';
+
+      if (type === 'pc') {
+        innerHTML = `
+          <select name="pc_model[]">
+            <option value="">모델 선택</option>
+            <option value="삼성 i5">삼성 i5</option>
+            <option value="삼성 i7">삼성 i7</option>
+            <option value="LG i5">LG i5</option>
+            <option value="LG i7">LG i7</option>
+          </select>
+          <input type="number" name="pc_qty[]" min="1" placeholder="수량">
+          <button type="button" class="delete-button" onclick="removeRow(this, 'pc')">✕</button>
+        `;
+      } else if (type === 'monitor') {
+        innerHTML = `
+          <select name="monitor_model[]">
+            <option value="">모델 선택</option>
+            <option value="삼성 24인치">삼성 24인치</option>
+            <option value="삼성 27인치">삼성 27인치</option>
+          </select>
+          <input type="number" name="monitor_qty[]" min="1" placeholder="수량">
+          <button type="button" class="delete-button" onclick="removeRow(this, 'monitor')">✕</button>
+        `;
+      } else if (type === 'router') {
+        innerHTML = `
+          <select name="router_model[]">
+            <option value="">모델 선택</option>
+            <option value="G5CE">G5CE</option>
+            <option value="G5RE">G5RE</option>
+            <option value="LGR25">LGR25</option>
+            <option value="LGR250">LGR250</option>
+          </select>
+          <input type="number" name="router_qty[]" min="1" placeholder="수량">
+          <button type="button" class="delete-button" onclick="removeRow(this, 'router')">✕</button>
+        `;
+      } else if (type === 'alc') {
+        innerHTML = `
+          <select name="alc_model[]">
+            <option value="">모델 선택</option>
+            <option value="ZN551">ZN551</option>
+            <option value="ZN253">ZN253</option>
+            <option value="SE6104SP">SE6104SP</option>
+            <option value="SE6166SP">SE6166SP</option>
+          </select>
+          <input type="number" name="alc_qty[]" min="1" placeholder="수량">
+          <button type="button" class="delete-button" onclick="removeRow(this, 'alc')">✕</button>
+        `;
+      } else if (type === 'labor') {
+        innerHTML = `
+          <input type="text" name="labor[]" placeholder="금액 또는 상세 내용을 입력하세요" class="flex-grow">
+          <button type="button" class="delete-button" onclick="removeRow(this, 'labor')">✕</button>
+        `;
+      }
+
+      newRow.innerHTML = innerHTML;
+      section.appendChild(newRow);
+    }
+
+    function removeRow(button, type) {
+      const section = document.getElementById(`${type}-section`);
+      const rows = section.querySelectorAll('.item-row');
+      if (rows.length <= 1) {
+        alert("최소 1개의 항목은 남겨두어야 합니다.");
+        return;
+      }
+      button.parentElement.remove();
+    }
+  </script>
+
+</body>
+</html>
